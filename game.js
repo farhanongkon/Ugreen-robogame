@@ -23,13 +23,13 @@
   const MUTE_KEY = 'ugreen-zigzag-muted';
   const SQ = Math.SQRT1_2;            // paths run at 45 degrees
   const WANDER_LIMIT = 240;           // how far the path may drift sideways
-  const RAMP_SCORE = 400;             // score at which difficulty maxes out
+  const RAMP_SCORE = 220;             // score at which difficulty maxes out
   const FALL_TIME = 0.75;             // seconds of falling animation
   const LEVELS = [
     { name: 'EASY', at: 0 },
-    { name: 'MEDIUM', at: 60 },
-    { name: 'HARD', at: 160 },
-    { name: 'INSANE', at: 320 },
+    { name: 'MEDIUM', at: 25 },
+    { name: 'HARD', at: 70 },
+    { name: 'INSANE', at: 150 },
   ];
 
   // ---------- Storage helpers ----------
@@ -98,8 +98,8 @@
 
   // ---------- Path ----------
   function addSegment() {
-    const len = 160 + Math.random() * 220;
-    let d = Math.random() < 0.7 ? -genDir : genDir;
+    const len = 100 + Math.random() * 160;
+    let d = Math.random() < 0.88 ? -genDir : genDir;
     if (genX + d * len > WANDER_LIMIT) d = -1;
     else if (genX + d * len < -WANDER_LIMIT) d = 1;
     const nx = genX + d * len;
@@ -176,7 +176,7 @@
     bonus = 0; fallT = 0;
     score = -1; setScore(0);
     levelIdx = 0; updateDifficulty(true);
-    speed = 2.6; hh = 62;
+    speed = 3.9; hh = 48;
     ensurePath();
   }
 
@@ -237,8 +237,8 @@
     t += dt;
 
     const ramp = Math.min(score, RAMP_SCORE) / RAMP_SCORE;
-    speed = 2.6 + ramp * 2.0;
-    hh = 62 - ramp * 22;
+    speed = 3.9 + ramp * 2.7;
+    hh = 48 - ramp * 18;
 
     if (state === 'playing') {
       px += dir * speed * s;
