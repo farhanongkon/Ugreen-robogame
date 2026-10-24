@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0c0b">
+  <meta name="description" content="An endless zig-zag arcade runner starring the UGREEN robot charger. Tap to change direction and chase the high score.">
+  <title>UGREEN ZIG ZAG — Endless Runner</title>
+  <link rel="icon" href="ugreen-robot-charger.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <canvas id="game" aria-label="Zig zag game"></canvas>
+
+    <header class="hud">
+      <div class="hud-block">
+        <span class="label">Score</span>
+        <span id="score" class="value">0000</span>
+      </div>
+      <div id="difficulty" class="chip">EASY</div>
+      <div class="hud-block right">
+        <span class="label">Best</span>
+        <span id="best" class="value">0000</span>
+      </div>
+    </header>
+
+    <div class="tools">
+      <button id="muteBtn" class="icon-btn" type="button" aria-label="Toggle sound">🔊</button>
+      <button id="pauseBtn" class="icon-btn" type="button" aria-label="Pause">❚❚</button>
+    </div>
+
+    <!-- Start -->
+    <section id="startScreen" class="overlay" aria-label="Start screen">
+      <p class="eyebrow">ROBOT CHARGER · MINI ARCADE</p>
+      <h1>UGREEN <span>ZIG ZAG</span></h1>
+      <img class="hero" src="ugreen-robot-charger.png" alt="UGREEN robot charger, the player character" width="130" height="182">
+      <p class="hint">Tap anywhere to change direction<br><small>Click, tap, or press Space to change direction</small></p>
+      <p class="cta">Tap to Start</p>
+      <p class="best-line">Best <b id="bestStart">0000</b></p>
+    </section>
+
+    <!-- Pause -->
+    <section id="pauseScreen" class="overlay hidden" aria-label="Paused">
+      <h2>Paused</h2>
+      <div class="btn-row">
+        <button id="resumeBtn" class="btn primary" type="button">Resume</button>
+        <button id="restartBtn" class="btn" type="button">Restart</button>
+      </div>
+    </section>
+
+    <!-- Game over -->
+    <section id="overScreen" class="overlay hidden" aria-label="Game over">
+      <h2>Game Over</h2>
+      <p id="newBest" class="badge hidden">New High Score!</p>
+      <p class="big-score"><span class="label">Score</span><b id="finalScore">0000</b></p>
+      <p class="best-line">Best <b id="bestOver">0000</b></p>
+      <button id="againBtn" class="btn primary" type="button">Play Again</button>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
